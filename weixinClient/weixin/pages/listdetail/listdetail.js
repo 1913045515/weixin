@@ -55,7 +55,7 @@ getMore:function(e){
   var that = this;
   var page = that.data.page;
   wx.request({
-    url: app.d.ceshiUrl + '/Api/Product/lists',
+    url: app.server.hostUrl + '/Api/ProductList/list',
       method:'post',
       data: {
         page:page,
@@ -64,7 +64,7 @@ getMore:function(e){
         brand_id: that.data.brandId
       },
       header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'content-type': 'application/json' // 默认值
       },
       success: function (res) { 
         console.info(res); 
@@ -113,7 +113,7 @@ onLoad: function (options) {
     })
     //ajax请求数据
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Product/lists',
+      url: app.server.hostUrl + '/Api/ProductList/list',
       method:'post',
       data: {
         cat_id:cat_id,
@@ -121,7 +121,7 @@ onLoad: function (options) {
         brand_id: brandId
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/json' // 默认值
       },
       success: function (res) {
         var shoplist = res.data.pro;

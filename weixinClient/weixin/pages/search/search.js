@@ -14,11 +14,11 @@ Page({
   onLoad:function(options){
     var that = this;
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Search/index',
+      url: app.server.hostUrl + '/Api/Search/index',
       method:'post',
       data: {uid:app.d.userId},
       header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'content-type': 'application/json' // 默认值
       },
       success: function (res) {
         var remen = res.data.remen;
@@ -116,7 +116,7 @@ Page({
   searchProductData:function(){
     var that = this;
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Search/searches',
+      url: app.server.hostUrl + '/Api/Search/searches',
       method:'post',
       data: {
         keyword:that.data.searchValue,
@@ -124,7 +124,7 @@ Page({
         page:that.data.page,
       },
       header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'content-type': 'application/json' // 默认值
       },
       success: function (res) {   
         var data = res.data.pro;

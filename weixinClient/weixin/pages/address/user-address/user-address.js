@@ -12,20 +12,20 @@ Page({
     var that = this;
     // 页面初始化 options为页面跳转所带来的参数
     var cartId = options.cartId;
-    console.log(app.d.userId);
+    var userId="";
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Address/index',
+      url: app.server.hostUrl + '/Api/Address/index',
       data: {
-        user_id:app.d.userId,
+        user_id:userId,
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: {// 设置请求的 header
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'content-type': 'application/json' // 默认值
       },
       
       success: function (res) {
         // success
-        var address = res.data.adds;
+        var address = res.data.addressArray;
         console.log(address);
         if (address == '') {
           var address = []
@@ -53,15 +53,16 @@ Page({
   setDefault: function(e) {
     var that = this;
     var addrId = e.currentTarget.dataset.id;
+    var userId="";
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Address/set_default',
+      url: app.server.hostUrl + '/Api/Address/setDefault',
       data: {
-        uid:app.d.userId,
+        uid:userId,
         addr_id:addrId
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: {// 设置请求的 header
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'content-type': 'application/json' // 默认值
       },
       
       success: function (res) {
@@ -101,19 +102,20 @@ Page({
   delAddress: function (e) {
     var that = this;
     var addrId = e.currentTarget.dataset.id;
+    var userId="";
     wx.showModal({
       title: '提示',
       content: '你确认移除吗',
       success: function(res) {
         res.confirm && wx.request({
-          url: app.d.ceshiUrl + '/Api/Address/del_adds',
+          url: app.server.hostUrl  + '/Api/Address/deleteAddress',
           data: {
-            user_id:app.d.userId,
+            user_id:userId,
             id_arr:addrId
           },
           method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
           header: {// 设置请求的 header
-            'Content-Type':  'application/x-www-form-urlencoded'
+            'content-type': 'application/json' // 默认值
           },
           
           success: function (res) {
@@ -143,14 +145,15 @@ Page({
   DataonLoad: function () {
     var that = this;
     // 页面初始化 options为页面跳转所带来的参数
+    var userId="";
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Address/index',
+      url: app.server.hostUrl  + '/Api/Address/index',
       data: {
-        user_id:app.d.userId,
+        user_id:userId,
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: {// 设置请求的 header
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'content-type': 'application/json' // 默认值
       },
       
       success: function (res) {

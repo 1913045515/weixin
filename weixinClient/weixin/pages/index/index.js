@@ -9,6 +9,7 @@ Page({
     duration: 1000,
     circular: true,
     productData: [],
+    userInfo: {},
     proCat: [],
     page: 2,
     index: 2,
@@ -110,8 +111,9 @@ Page({
   getMore: function (e) {
     var that = this;
     var page = that.data.page;
+    var productData = that.data.productData;
     wx.request({
-      url: 'http://127.0.0.1/Api/Product/lists',
+      url: app.server.hostUrl+'/Api/Product/lists',
       method: 'post',
       data: {},
       header: {
@@ -129,7 +131,7 @@ Page({
         //that.initProductData(data);
         that.setData({
           page: page + 1,
-          productData: res.data
+          productData: that.data.productData.concat(res.data)
         });
         //endInitData
       },
@@ -166,34 +168,24 @@ Page({
     var that = this;
     that.getMore();
     wx.request({
-      url: 'http://127.0.0.1/Api/Product/index',
+      url: app.server.hostUrl+'/Api/Product/index',
       method: 'post',
       data: {},
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        // var ggtop = res.data.ggtop;
         var ggtop= res.data;
-        // var prolist = res.data.prolist;
-        // var brand = res.data.brand;
-        // var course = res.data.course;
-        // //that.initProductData(data);
         that.setData({
           imgUrls: ggtop,
-          // proCat: procat,
-          // productData: prolist,
-          // brand: brand,
-          // course: course
         });
-        //endInitData
       },
       fail: function (e) {
         wx.showToast({
           title: '网络异常！',
           duration: 2000
         });
-      },
+      }
     })
-  }
+  },
 });

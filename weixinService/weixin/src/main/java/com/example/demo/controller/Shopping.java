@@ -38,19 +38,6 @@ public class Shopping {
             cartList.add(cartMap);
         }
         result.put("cart",cartList);
-
-//        List<Map<String, Object>> productList = new ArrayList<Map<String, Object>>();
-//        for (int i = 0; i <= 5; i++) {
-//            Map<String, Object> productMap = new HashMap<String, Object>();
-//            productMap.put("ProID",i);
-//            productMap.put("ProductName", "商品" + i);
-//            productMap.put("Price",i);
-//            productMap.put("BuyCount",i);
-//            productMap.put("CartID",i);
-//            productMap.put("ImgUrl",ImageArr[i]);
-//            productList.add(productMap);
-//        }
-//        result.put("product",productList);
         String jsonString = JSON.toJSONString(result);
         return jsonString;
     }
@@ -61,6 +48,16 @@ public class Shopping {
         Map<String, Object> result=new HashMap<String,Object>();
         result.put("status",1);
         result.put("msg","删除成功！");
+        String jsonString = JSON.toJSONString(result);
+        return jsonString;
+    }
+
+    @RequestMapping("add")
+    @ResponseBody
+    public String add(String uid,String pid,String num) {
+        Map<String, Object> result=new HashMap<String,Object>();
+        result.put("status",1);
+        result.put("msg","添加成功！");
         String jsonString = JSON.toJSONString(result);
         return jsonString;
     }

@@ -36,14 +36,11 @@ Page( {
   onLoad: function () {
       var that = this
       //调用应用实例的方法获取全局数据
-      app.getUserInfo(function(userInfo){
         //更新数据
         that.setData({
-          userInfo:userInfo,
+          userInfo: app.globalData.userInfo,
           loadingHidden: true
-        })
       });
-
       this.loadOrderStatus();
   },
   onShow:function(){
@@ -53,13 +50,13 @@ Page( {
     //获取用户订单数据
     var that = this;
     wx.request({
-      url: app.d.ceshiUrl + '/Api/User/getorder',
+      url: app.server.hostUrl + '/Api/Order/getOrder',
       method:'post',
       data: {
-        userId:app.d.userId,
+        userId: app.server.userId,
       },
       header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'content-type': 'application/json' // 默认值
       },
       success: function (res) {
         //--init data        

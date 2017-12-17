@@ -28,7 +28,7 @@
 </radio-group>
 <navigator url="../address?cartId={{cartId}}">
   <view hidden="{{hiddenAddress}}" class="add-address">
-    <image class="add-address-icon" src="#"></image>
+    <image class="add-address-icon" src="http://www.wolzq.com/my/g1.jpg"></image>
     <view>新增地址</view>
   </view>
 </navigator>

@@ -95,7 +95,7 @@ Page({
   loadProductDetail:function(){
     var that = this;
     wx.request({
-      url: 'http://127.0.0.1/Api/Product/detail',
+      url: app.server.hostUrl+'/Api/Product/detail',
       method:'post',
       data: {
         pro_id: that.data.productId,
@@ -349,15 +349,16 @@ Page({
 //添加到收藏
   addFavorites:function(e){
     var that = this;
+    var userId="";
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Product/col',
+      url: app.server.hostUrl + '/Api/Favorites/addFavorites',
       method:'post',
       data: {
-        uid: app.d.userId,
+        uid: userId,
         pid: that.data.productId,
       },
       header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'content-type': 'application/json' // 默认值
       },
       success: function (res) {
         // //--init data        
@@ -389,15 +390,15 @@ Page({
   addShopCart:function(e){ //添加到购物车
     var that = this;
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Shopping/add',
+      url: app.server.hostUrl + '/Api/Shopping/add',
       method:'post',
       data: {
-        uid: app.d.userId,
+        uid: app.server.userId,
         pid: that.data.productId,
         num: that.data.buynum,
       },
       header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'content-type': 'application/json' // 默认值
       },
       success: function (res) {
         // //--init data        

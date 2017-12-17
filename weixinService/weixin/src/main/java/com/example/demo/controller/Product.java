@@ -16,11 +16,12 @@ import java.util.Map;
  */
 
 @Controller
-@RequestMapping("/Api/Product/")
+@RequestMapping("/Api/ProductList/")
 public class Product {
-    @RequestMapping("lists")
+    @RequestMapping("list")
     @ResponseBody
-    public String lists() {
+    public String list(String cat_id,String ptype,String brand_id) {
+        Map<String, Object> result = new HashMap<>();
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         String[] ImageArr=new String[]{
                 "http://www.wolzq.com/my/g1.jpg",
@@ -41,77 +42,8 @@ public class Product {
             map.put("intro",i);
             list.add(map);
         }
-        String jsonString = JSON.toJSONString(list);
-        return jsonString;
-    }
-
-    @RequestMapping("detail")
-    @ResponseBody
-    public String detail(String pro_id) {
-        Map<String, Object> result=new HashMap<String,Object>();
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        String[] ImageArr=new String[]{
-            "http://www.wolzq.com/my/1.jpg",
-            "http://www.wolzq.com/my/2.jpg",
-            "http://www.wolzq.com/my/3.jpg"
-        };
-        Map<String, Object> proMap = new HashMap<String, Object>();
-        proMap.put("photo_x", "http://www.wolzq.com/my/g1.jpg");
-//        proMap.put("photo_d", "10");
-        proMap.put("name", "iphone6s");
-        proMap.put("cat_name", "苹果手机");
-//        proMap.put("photo_string", "http://www.wolzq.com/my/g1.jpg");
-        proMap.put("img_arr",ImageArr);
-        proMap.put("pro_number", "100001");
-        proMap.put("brand","苹果");
-        proMap.put("price_yh","6000");
-        proMap.put("num","100");
-        proMap.put("id","1");
-
-        String[] imgUrls=new String[]{
-                "http://www.wolzq.com/my/g1.jpg",
-                "http://www.wolzq.com/my/g2.jpg",
-                "http://www.wolzq.com/my/g3.jpg",
-                "http://www.wolzq.com/my/g4.jpg",
-                "http://www.wolzq.com/my/g5.jpg",
-                "http://www.wolzq.com/my/g6.jpg"
-        };
-
-        String imgUrl="<img src=\"http://www.wolzq.com/my/g6.jpg\" alt=\"\" width=\"100%\"/>"+
-                "<img src=\"http://www.wolzq.com/my/g1.jpg\" alt=\"\" width=\"100%\" />"+
-                "<img src=\"http://www.wolzq.com/my/g2.jpg\" alt=\"\" width=\"100%\" />"+
-                "<img src=\"http://www.wolzq.com/my/g3.jpg\" alt=\"\" width=\"100%\" />"+
-                "<img src=\"http://www.wolzq.com/my/g4.jpg\" alt=\"\" width=\"100%\" />"+
-                "<img src=\"http://www.wolzq.com/my/g5.jpg\" alt=\"\" width=\"100%\" />";
-        proMap.put("content",imgUrl);
-
-        result.put("status","1");
-        result.put("pro",proMap);
-        result.put("err","执行成功");
-        result.put("commodityAttr","");
-        result.put("attrValueList","");
+        result.put("pro",list);
         String jsonString = JSON.toJSONString(result);
-        return jsonString;
-    }
-
-
-    @RequestMapping("index")
-    @ResponseBody
-    public String index() {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        String[] ImageArr=new String[]{
-                "http://www.wolzq.com/my/1.jpg",
-                "http://www.wolzq.com/my/2.jpg",
-                "http://www.wolzq.com/my/3.jpg"
-        };
-        for (int i = 0; i < 3; i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("id", "id_"+i );
-            map.put("unique", "unique_" +i);
-            map.put("photo", ImageArr[i]);
-            list.add(map);
-        }
-        String jsonString = JSON.toJSONString(list);
         return jsonString;
     }
 }
