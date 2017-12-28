@@ -1,7 +1,7 @@
 //app.js
 App({
   server: {
-    hostUrl: 'http://127.0.0.1',
+    hostUrl: 'http://127.0.0.1:8080',
     userId: 1,
     appId: "",
     appKey: ""
