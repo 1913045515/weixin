@@ -1,7 +1,7 @@
 //app.js
 App({
   server: {
-    hostUrl: 'http://127.0.0.1:8080',
+    hostUrl: 'https://www.wolzq.com/weixin',
     userId: 1,
     appId: "",
     appKey: ""
