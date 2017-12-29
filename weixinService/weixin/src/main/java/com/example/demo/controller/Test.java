@@ -18,6 +18,6 @@ public class Test {
     @RequestMapping("/")
     @ResponseBody
     public String index() {
-      return "我是数据测试的。。。。。，如果看到就说明自动部署成功了！！！";
+      return "恭喜你~如果看到就说明自动部署成功了！！！";
     }
 }
