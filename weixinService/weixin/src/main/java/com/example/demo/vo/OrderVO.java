@@ -3,15 +3,15 @@ package com.example.demo.vo;
 /**
  * Created by qiang on 2017/12/14.
  */
-public class Order {
+public class OrderVO {
     private String openId;
     private String orderNo;
     private String payMoney;
-    public Order(){
+    public OrderVO(){
 
     }
 
-    public Order(String openId, String orderNo, String payMoney) {
+    public OrderVO(String openId, String orderNo, String payMoney) {
         this.openId = openId;
         this.orderNo = orderNo;
         this.payMoney = payMoney;

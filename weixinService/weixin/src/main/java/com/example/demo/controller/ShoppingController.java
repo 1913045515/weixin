@@ -13,7 +13,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/Api/Shopping/")
-public class Shopping {
+public class ShoppingController {
     @RequestMapping("index")
     @ResponseBody
     public String index(String user_id) {
@@ -79,5 +79,4 @@ public class Shopping {
         String jsonString = JSON.toJSONString(result);
         return jsonString;
     }
-
 }

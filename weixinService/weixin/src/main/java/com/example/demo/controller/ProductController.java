@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -17,7 +16,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/Api/ProductList/")
-public class Product {
+public class ProductController {
     @RequestMapping("list")
     @ResponseBody
     public String list(String cat_id,String ptype,String brand_id) {

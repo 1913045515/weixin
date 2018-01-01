@@ -5,13 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
+
 /**
  * Created by qiang on 2017/12/10.
  */
 
 @Controller
 @RequestMapping("/Api/Address/")
-public class Address {
+public class AddressController {
     @RequestMapping("index")
     @ResponseBody
     public String index(String user_id) {

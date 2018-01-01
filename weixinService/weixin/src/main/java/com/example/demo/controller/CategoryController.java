@@ -13,7 +13,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/Api/Category/")
-public class Category {
+public class CategoryController {
     @RequestMapping("index")
     @ResponseBody
     public String index() {

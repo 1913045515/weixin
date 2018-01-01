@@ -3,11 +3,12 @@ import com.example.demo.config.WxPayConfig;
 import com.example.demo.utils.IpUtils;
 import com.example.demo.utils.PayUtil;
 import com.example.demo.utils.StringUtils;
-import com.example.demo.vo.Order;
+import com.example.demo.vo.OrderVO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * Created by qiang on 2017/12/14.
  */
@@ -18,7 +19,7 @@ public class UserService {
      * @param request
      */
     public Map<String, Object> wxPay(Integer openid, HttpServletRequest request){
-        Order order=new Order("12bhjgjm1b24","123","10");
+        OrderVO order=new OrderVO("12bhjgjm1b24","123","10");
         try{
             //生成的随机字符串
             String nonce_str = StringUtils.getRandomStringByLength(32);

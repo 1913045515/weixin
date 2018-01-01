@@ -5,9 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,7 +14,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/Api/Favorites/")
-public class Favorites {
+public class FavoritesController {
 
     @RequestMapping("addFavorites")
     @ResponseBody

@@ -13,7 +13,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/Api/Payment/")
-public class Payment {
+public class PaymentController {
 
     @RequestMapping("buyCart")
     @ResponseBody
@@ -57,5 +57,25 @@ public class Payment {
         result.put("remark","快点送过来");
         String jsonString = JSON.toJSONString(result);
         return jsonString;
+    }
+
+    @RequestMapping(value="/payment")
+    @ResponseBody
+    public Map<String,Object> payment(String orderId,String userId,String nonceStr,String prepayId){
+        System.out.println("您调用了支付接口了！！！");
+        System.out.println("userId:"+userId+"   orderId:"+orderId);
+        Map<String,Object>result=new HashMap<>();
+        result.put("status","1");
+//        Long timeStamp = System.currentTimeMillis() / 1000;
+//        result.put("timeStamp",timeStamp);
+//        result.put("nonceStr",nonceStr);
+//        result.put("package","prepay_id=" + prepayId);
+//        result.put("signType","MD5");
+//        //拼接签名需要的参数
+//        String stringSignTemp = "appId=" + ConstantUtils.appId+ "&nonceStr=" + nonceStr + "&package=prepay_id=" + prepayId+ "&signType=MD5&timeStamp=" + timeStamp;
+//        //再次签名，这个签名用于小程序端调用wx.requesetPayment方法
+//        String paySign = PayUtil.sign(stringSignTemp, WxPayConfig.key, "utf-8").toUpperCase();
+//        result.put("paySign",paySign);
+        return result;
     }
 }

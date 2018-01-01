@@ -1,7 +1,7 @@
 package com.example.demo.utils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by qiang on 2017/12/14.
@@ -24,6 +24,10 @@ public class StringUtils {
         return sb.toString();
     }
 
+    public static String getRandomString(){
+        UUID uuid = UUID.randomUUID();
+        return uuid.toString();
+    }
     public static boolean isNotEmpty(String object){
         if(object!=null && !"null".equals(object) && !"".equals(object)){
             return true;

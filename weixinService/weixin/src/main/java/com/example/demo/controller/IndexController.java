@@ -13,7 +13,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/Api/Product/")
-public class Index {
+public class IndexController {
     @RequestMapping("lists")
     @ResponseBody
     public String lists() {
@@ -67,20 +67,20 @@ public class Index {
         proMap.put("id","1");
 
         String[] imgUrls=new String[]{
-                "https://www.wolzq.com/my/g1.jpg",
-                "https://www.wolzq.com/my/g2.jpg",
-                "https://www.wolzq.com/my/g3.jpg",
-                "https://www.wolzq.com/my/g4.jpg",
-                "https://www.wolzq.com/my/g5.jpg",
-                "https://www.wolzq.com/my/g6.jpg"
+                "http://www.wolzq.com/my/g1.jpg",
+                "http://www.wolzq.com/my/g2.jpg",
+                "http://www.wolzq.com/my/g3.jpg",
+                "http://www.wolzq.com/my/g4.jpg",
+                "http://www.wolzq.com/my/g5.jpg",
+                "http://www.wolzq.com/my/g6.jpg"
         };
 
-        String imgUrl="<img src=\"https://www.wolzq.com/my/g6.jpg\" alt=\"\" width=\"100%\"/>"+
-                "<img src=\"https://www.wolzq.com/my/g1.jpg\" alt=\"\" width=\"100%\" />"+
-                "<img src=\"https://www.wolzq.com/my/g2.jpg\" alt=\"\" width=\"100%\" />"+
-                "<img src=\"https://www.wolzq.com/my/g3.jpg\" alt=\"\" width=\"100%\" />"+
-                "<img src=\"https://www.wolzq.com/my/g4.jpg\" alt=\"\" width=\"100%\" />"+
-                "<img src=\"https://www.wolzq.com/my/g5.jpg\" alt=\"\" width=\"100%\" />";
+        String imgUrl="<img src=\"http://www.wolzq.com/my/g6.jpg\" alt=\"\" width=\"100%\"/>"+
+                "<img src=\"http://www.wolzq.com/my/g1.jpg\" alt=\"\" width=\"100%\" />"+
+                "<img src=\"http://www.wolzq.com/my/g2.jpg\" alt=\"\" width=\"100%\" />"+
+                "<img src=\"http://www.wolzq.com/my/g3.jpg\" alt=\"\" width=\"100%\" />"+
+                "<img src=\"http://www.wolzq.com/my/g4.jpg\" alt=\"\" width=\"100%\" />"+
+                "<img src=\"http://www.wolzq.com/my/g5.jpg\" alt=\"\" width=\"100%\" />";
         proMap.put("content",imgUrl);
 
         result.put("status","1");
@@ -98,9 +98,9 @@ public class Index {
     public String index() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         String[] ImageArr=new String[]{
-                "https://www.wolzq.com/my/1.jpg",
-                "https://www.wolzq.com/my/2.jpg",
-                "https://www.wolzq.com/my/3.jpg"
+                "http://www.wolzq.com/my/1.jpg",
+                "http://www.wolzq.com/my/2.jpg",
+                "http://www.wolzq.com/my/3.jpg"
         };
         for (int i = 0; i < 3; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
