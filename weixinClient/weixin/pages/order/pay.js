@@ -100,35 +100,36 @@ Page({
     //创建订单
     var that = this;
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Payment/payment',
+      url: app.server.hostUrl + '/Api/Order/createOrder',
       method:'post',
       data: {
-        uid: that.data.userId,
-        cart_id: that.data.cartId,
-        type:that.data.paytype,
-        aid: that.data.addrId,//地址的id
-        remark: that.data.remark,//用户备注
-        price: that.data.total,//总价
-        vid: that.data.vid,//优惠券ID
+        openId: app.server.appId
+        // uid: that.data.userId,
+        // cart_id: that.data.cartId,
+        // type:that.data.paytype,
+        // aid: that.data.addrId,//地址的id
+        // remark: that.data.remark,//用户备注
+        // price: that.data.total,//总价
+        // vid: that.data.vid,//优惠券ID
       },
       header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
         //--init data        
         var data = res.data;
         if(data.status == 1){
           //创建订单成功
-          if(data.arr.pay_type == 'cash'){
+          if(data.payType == 'cash'){
               wx.showToast({
                  title:"请自行联系商家进行发货!",
                  duration:3000
               });
               return false;
           }
-          if(data.arr.pay_type == 'weixin'){
+          if(data.payType == 'weixin'){
             //微信支付
-            that.wxpay(data.arr);
+            that.wxpay(data);
           }
         }else{
           wx.showToast({
@@ -149,19 +150,17 @@ Page({
   //调起微信支付
   wxpay: function(order){
       wx.request({
-        url: app.d.ceshiUrl + '/Api/Wxpay/wxpay',
+        url: app.server.hostUrl + '/Api/Payment/payment',
+        method: 'post',
         data: {
-          order_id:order.order_id,
-          order_sn:order.order_sn,
-          uid:this.data.userId,
+          orderId:order.orderId,
+          userId:app.server.userId
         },
-        method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         header: {
-          'Content-Type':  'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded'
         }, // 设置请求的 header
         success: function(res){
           if(res.data.status==1){
-            var order=res.data.arr;
             wx.requestPayment({
               timeStamp: order.timeStamp,
               nonceStr: order.nonceStr,
@@ -180,15 +179,16 @@ Page({
                 },2500);
               },
               fail: function(res) {
+                console.info(res);
                 wx.showToast({
-                  title:res,
+                  title: res.err_desc,
                   duration:3000
                 })
               }
             })
           }else{
             wx.showToast({
-              title: res.data.err,
+              title: res.data,
               duration: 2000
             });
           }

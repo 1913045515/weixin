@@ -1,8 +1,9 @@
 //app.js
 App({
   server: {
-    hostUrl: 'https://www.wolzq.com/weixin',
-    userId: 1,
+    hostUrl: 'http://127.0.0.1:8080', 
+    // hostUrl: 'https://www.wolzq.com/weixin',  
+    userId: "testId",
     appId: "",
     appKey: ""
   },
@@ -16,6 +17,18 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        //获取用户的sessionKey和openID
+        //发起网络请求
+        var that=this;
+        wx.request({
+          url: this.server.hostUrl + '/Api/User/onLogin',
+          data: {
+            code: res.code
+          }, success: function (res) {
+            that.server.appId = res.data.openid;
+            that.server.appKey = res.data.session_key;
+          }
+        }) 
       }
     })
     // 获取用户信息
