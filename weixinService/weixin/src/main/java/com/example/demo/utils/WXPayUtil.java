@@ -297,24 +297,24 @@ public class WXPayUtil {
         return UUID.randomUUID().toString().replaceAll("-", "").substring(0, 32);
     }
 
-    public static void main(String[] args) {
-        Map<String, String> packageParams = new HashMap<String ,String>();
-        packageParams.put("appid", ConstantUtils.appId);
-        packageParams.put("body","测试商品名称");
-        packageParams.put("mch_id", ConstantUtils.mchId);
-        packageParams.put("nonce_str","d88232fd545c490bb3d7fefc5179de77");
-        packageParams.put("notify_url", ConstantUtils.notifyUrl);//支付成功后的回调地址
-        packageParams.put("openid","ouY_q0FVCeaPbfDnJnW2kpuaUfM8");//支付方式
-        packageParams.put("out_trade_no", "12345678");//商户订单号
-        packageParams.put("sign_type", ConstantUtils.signType);
-        packageParams.put("spbill_create_ip","127.0.0.1");
-        packageParams.put("total_fee","1");//支付金额，这边需要转成字符串类型，否则后面的签名会失败
-        packageParams.put("trade_type", ConstantUtils.tradeType);//支付方式
-        String sign="";
-        try {
-            sign= WXPayUtil.generateSignature(packageParams, ConstantUtils.key);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String[] args) {
+//        Map<String, String> packageParams = new HashMap<String ,String>();
+//        packageParams.put("appid", ConstantUtils.appId);
+//        packageParams.put("body","测试商品名称");
+//        packageParams.put("mch_id", ConstantUtils.mchId);
+//        packageParams.put("nonce_str","d88232fd545c490bb3d7fefc5179de77");
+//        packageParams.put("notify_url", ConstantUtils.notifyUrl);//支付成功后的回调地址
+//        packageParams.put("openid","ouY_q0FVCeaPbfDnJnW2kpuaUfM8");//支付方式
+//        packageParams.put("out_trade_no", "12345678");//商户订单号
+//        packageParams.put("sign_type", ConstantUtils.signType);
+//        packageParams.put("spbill_create_ip","127.0.0.1");
+//        packageParams.put("total_fee","1");//支付金额，这边需要转成字符串类型，否则后面的签名会失败
+//        packageParams.put("trade_type", ConstantUtils.tradeType);//支付方式
+//        String sign="";
+//        try {
+//            sign= WXPayUtil.generateSignature(packageParams, ConstantUtils.key);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
